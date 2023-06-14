@@ -41,7 +41,7 @@ class SimpleGUI(Display):
         # https://www.pythonguis.com/tutorials/pyqt-signals-slots-events/
         
         # https://doc.qt.io/qt-6/qabstractbutton.html#clicked
-        self.ui.push_button.clicked.connect(self.display_options)
+       # self.ui.push_button.clicked.connect(self.display_options)
         
         # https://doc.qt.io/qt-6/qcheckbox.html#stateChanged
         # https://www.learnpython.org/en/Partial_functions
@@ -63,7 +63,9 @@ class SimpleGUI(Display):
         """
         self.checked_dict[key] = ("Checked" if checked_state == Qt.Checked
                                   else "Not Checked")
-    
+        self.ui.output_label.setText(json.dumps(self.checked_dict))
+        self.display_options()
+
     @pyqtSlot()
     def display_options(self):
         """
@@ -72,3 +74,4 @@ class SimpleGUI(Display):
         :return:
         """
         self.ui.output_label.setText(json.dumps(self.checked_dict))
+
